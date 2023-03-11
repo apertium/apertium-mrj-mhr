@@ -1,0 +1,10 @@
+{
+    "mrj-mhr": {
+        "input": "mrj-mhr-input.txt",
+        "mode": "mrj-mhr"
+    },
+    "mhr-mrj": {
+        "input": "mhr-mrj-input.txt",
+        "mode": "mhr-mrj"
+    }
+}

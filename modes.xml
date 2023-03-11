@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modes>
+
+  <!-- mrj → mhr -->
+
+  <mode name="mrj-mhr" install="yes" gendebug="yes">
+    <pipeline>
+
+      <program name="hfst-proc --weight-classes 1 -w -e">
+	<file name="mrj-mhr.automorf.hfst"/>
+      </program>
+      <program name="cg-proc -w">
+        <file name="mrj-mhr.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -n -1 -w">
+        <file name="mrj-mhr.syn.rlx.bin"/>
+      </program>
+
+
+      <program name="cg-proc -w">
+        <file name="mrj-mhr.rlx.bin"/>
+      </program>
+      <program name="apertium-tagger -g $2">
+        <file name="mrj-mhr.prob"/>
+      </program>
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="mrj-mhr.autobil.bin"/>
+      </program>
+      <program name="lrx-proc -m">
+        <file name="mrj-mhr.autolex.bin"/>
+      </program>
+
+      <program name="apertium-transfer -b">
+        <file name="apertium-mrj-mhr.mrj-mhr.t1x"/>
+        <file name="mrj-mhr.t1x.bin"/>
+      </program>
+      <program name="apertium-interchunk">
+        <file name="apertium-mrj-mhr.mrj-mhr.t2x"/>
+        <file name="mrj-mhr.t2x.bin"/>
+      </program>
+      <program name="apertium-postchunk">
+        <file name="apertium-mrj-mhr.mrj-mhr.t3x"/>
+        <file name="mrj-mhr.t3x.bin"/>
+      </program>
+
+      <program name="hfst-proc $1">
+	<file name="mrj-mhr.autogen.hfst"/>
+      </program>
+      <program name="lt-proc -p">
+        <file name="mrj-mhr.autopgen.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <!-- mhr → mrj -->
+
+  <mode name="mhr-mrj" install="yes" gendebug="yes">
+    <pipeline>
+
+      <program name="hfst-proc --weight-classes 1 -w -e">
+	<file name="mhr-mrj.automorf.hfst"/>
+      </program>
+      <program name="cg-proc -w">
+        <file name="mhr-mrj.mor.rlx.bin"/>
+      </program>
+      <program name="cg-proc -n -1 -w">
+        <file name="mhr-mrj.syn.rlx.bin"/>
+      </program>
+
+
+      <program name="cg-proc -w">
+        <file name="mhr-mrj.rlx.bin"/>
+      </program>
+      <program name="apertium-tagger -g $2">
+        <file name="mhr-mrj.prob"/>
+      </program>
+
+      <program name="apertium-pretransfer"/>
+      <program name="lt-proc -b">
+        <file name="mhr-mrj.autobil.bin"/>
+      </program>
+      <program name="lrx-proc -m">
+        <file name="mhr-mrj.autolex.bin"/>
+      </program>
+
+      <program name="apertium-transfer -b">
+        <file name="apertium-mrj-mhr.mhr-mrj.t1x"/>
+        <file name="mhr-mrj.t1x.bin"/>
+      </program>
+      <program name="apertium-interchunk">
+        <file name="apertium-mrj-mhr.mhr-mrj.t2x"/>
+        <file name="mhr-mrj.t2x.bin"/>
+      </program>
+      <program name="apertium-postchunk">
+        <file name="apertium-mrj-mhr.mhr-mrj.t3x"/>
+        <file name="mhr-mrj.t3x.bin"/>
+      </program>
+
+      <program name="hfst-proc $1">
+	<file name="mhr-mrj.autogen.hfst"/>
+      </program>
+      <program name="lt-proc -p">
+        <file name="mhr-mrj.autopgen.bin"/>
+      </program>
+    </pipeline>
+  </mode>
+</modes>
+
